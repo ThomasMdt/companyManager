@@ -1,0 +1,19 @@
+<div class="box container centered">
+<div class="field">
+    <p class="control has-icons-left mt-2">
+      <input class="input" placeholder="Username" [(ngModel)]="username">
+    </p>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="Password" [(ngModel)]="password">
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-success" (click)="login()" routerLink="/list">
+        Login
+      </button>
+    </p>
+  </div>
+</div>

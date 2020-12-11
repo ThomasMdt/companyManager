@@ -1,0 +1,60 @@
+
+<div class="container">
+        <div class="field">
+            <label class="label">Имя компании</label>
+            <div class="control">
+                <input class="input" [value] = "company.name" type="text">
+            </div>
+        </div>
+      
+        <div class="field">
+            <label class="label">Короткое имя компании</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.shortName" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">ИНН</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.INN" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">КПП</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.KPP" type="text">
+            </div>
+        </div>
+        <ng-container>
+        <div class="field">
+            <label class="label">Имя основателя</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.founder.firstName" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Фамилия основателя</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.founder.lastName" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Отчество основателя</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.founder.patronymic" type="text">
+            </div>
+        </div>
+        </ng-container>
+        <div class="field">
+            <label class="label">Адресс</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.address" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Номер телефона</label>
+            <div class="control ">
+                <input class="input" [(ngModel)] = "company.numberPhone" type="text">
+            </div>
+        </div>
+  </div>

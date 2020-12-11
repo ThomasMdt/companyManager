@@ -1,0 +1,106 @@
+<div class = "box container mt-5" style="width: 20%;">
+    <div class="field">
+        <label class="label">Выберите тип компании</label>
+        <div class="control">
+          <div class="select">
+            <select [(ngModel)]="typeCompany" (change)="createHeadCompany()">
+              <option>Головная компания</option>
+              <option>Филиал</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field" *ngIf="isFilial()">
+        <label class="label">Выберите головную компанию</label>
+        <div class="control">
+          <div class="select">
+            <select [(ngModel)] = "parentID" (change) = "createFilial()" >
+              <option *ngFor="let company of companies" value="{{company.ID}}">
+                  {{company.name}}
+              </option>
+              
+            </select>
+          </div>
+        </div>
+      </div>
+    <div class="field">
+        <label class="label">Имя компании</label>
+        <div class="control">
+            <input class="input" [value] = "company.name" type="text">
+        </div>
+    </div>
+  
+    <div class="field">
+        <label class="label">Короткое имя компании</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.shortName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">ИНН</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.INN" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">КПП</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.KPP" type="text">
+        </div>
+    </div>
+    <ng-container *ngIf="!isFilial()">
+    <div class="field">
+        <label class="label">Имя основателя</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.founder.firstName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Фамилия основателя</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.founder.lastName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Отчество основателя</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.founder.patronymic" type="text">
+        </div>
+    </div>
+    </ng-container>
+    <div class="field">
+        <label class="label">Адресс</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.address" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Номер телефона</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "company.numberPhone" type="text">
+        </div>
+    </div>
+    <ng-container *ngIf = "isFilial()"> 
+    <div class="field">
+        <label class="label">Имя должностного лица</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "firstName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Фамилия должностного лица</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "lastName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Отчество должностного лица</label>
+        <div class="control ">
+            <input class="input" [(ngModel)] = "patronymic" type="text">
+        </div>
+    </div>
+    </ng-container>
+    <div class="control">
+      <button class="button is-link" (click)=add() routerLink="/list">Добавить</button>
+    </div>
+</div>

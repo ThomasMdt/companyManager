@@ -1,0 +1,67 @@
+<div class="buttons">
+  <button class="button is-link is-light" (click)="toggleListView()">Список</button>
+<button class="button is-link is-light" (click)="toggleTreeView()">Дерево</button>
+<button class="button is-link is-light" routerLink="/create">Создать</button>
+</div>
+<div class = "container">
+    <ng-template [ngTemplateOutlet]="templateType" [ngTemplateOutletContext]="{ $implicit: companies}">
+    </ng-template>
+  
+</div>
+
+<ng-template #listTemplate let-companies>
+    <div class="card" *ngFor="let company of companies">
+      <header class="card-header">
+        <p class="card-header-title">
+          <a routerLink="/detail/{{company.ID}}">{{company.name}}</a>
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+            <table class = "table">
+                <tr>
+                    <td style = "width: 10% ">Короткое имя</td>
+                    <td>{{company.shortName}}</td>
+                </tr>
+                <tr>
+                    <td>ИНН</td>
+                    <td>{{company.INN}}</td>
+                </tr>
+                <tr>
+                  <td>КПП</td>
+                  <td>{{company.KPP}}</td>
+              </tr>
+              <tr>
+                <td>Основатель</td>
+                <td>
+                  {{company.founder.firstName}}  
+                  {{company.founder.patronymic}}
+                  {{company.founder.lastName}}
+                </td>
+            </tr>
+            <tr>
+              <td>Адресс</td>
+              <td>{{company.address}}</td>
+          </tr>
+          <tr>
+            <td>телефон</td>
+            <td>{{company.numberPhone}}</td>
+        </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+<ng-template #treeViewTemplate let-companies>
+  <aside class="menu">
+    <ul class="menu-list">
+        <li *ngFor="let company of companies">
+        <a class="is-active">{{company.name}}</a>
+        <ul *ngFor="let subsidiary of company.getSubsidiaries()">
+            <li><a routerLink="/detail/{{company.ID}}/subsidiaries/{{subsidiary.ID}}">{{subsidiary.name}}</a></li>
+             
+        </ul>
+        </li>
+    </ul>
+</aside>
+</ng-template>
